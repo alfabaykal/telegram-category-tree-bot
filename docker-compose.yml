@@ -1,0 +1,13 @@
+version: '3'
+services:
+  telegram-category-tree-bot:
+    image: alfabaykal/telegram-tree-bot:0.1
+    env_file: .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_started
+  postgres:
+    image: postgres:alpine
+    env_file: .env
